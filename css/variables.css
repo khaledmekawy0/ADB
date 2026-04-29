@@ -1,0 +1,162 @@
+/* ===================================================
+   DBHub — DESIGN TOKENS
+   Advanced Database Learning Platform for NMU
+   =================================================== */
+
+:root {
+    /* ---- NMU Brand Colors (from logo) ---- */
+    --navy:          #1B365D;           /* Deep Navy Blue from NMU logo */
+    --navy-dark:     #122540;           /* Darker Navy */
+    --navy-light:    #2A4A7C;           /* Lighter Navy */
+    --navy-glow:     rgba(27, 54, 93, 0.35);
+    --gold:          #C9A227;           /* Gold/Amber from NMU logo */
+    --gold-light:    #E5C76B;           /* Light Gold */
+    --gold-dark:     #A0821D;           /* Dark Gold */
+    --teal:          #0D7377;           /* Teal accent */
+    --teal-light:    #14A085;           /* Light Teal */
+    
+    /* ---- Semantic Colors ---- */
+    --accent:        var(--navy);
+    --accent-hover:  var(--navy-light);
+    --accent-glow:   var(--navy-glow);
+    --success:       #22C55E;
+    --warning:       var(--gold);       /* Gold from NMU logo */
+    --error:         #DC2626;
+    --info:          #2563EB;
+    
+    /* ---- SQL Syntax Colors ---- */
+    --sql-keyword:   #FF7B72;
+    --sql-string:    #A5D6FF;
+    --sql-number:    #79C0FF;
+    --sql-function:  #D2A8FF;
+    --sql-comment:   #8B949E;
+    
+    /* ---- NMU Accent Colors ---- */
+    --accent-gold:     var(--gold);
+    --accent-navy:     var(--navy);
+    
+    /* ---- Typography ---- */
+    --font-primary:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-arabic:   'Cairo', 'Inter', sans-serif;
+    --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+    
+    --fs-xs:     0.75rem;
+    --fs-sm:     0.875rem;
+    --fs-base:   1rem;
+    --fs-lg:     1.125rem;
+    --fs-xl:     1.25rem;
+    --fs-2xl:    1.5rem;
+    --fs-3xl:    1.875rem;
+    --fs-4xl:    2.25rem;
+    --fs-hero:   3rem;
+    
+    --fw-light:    300;
+    --fw-normal:   400;
+    --fw-medium:   500;
+    --fw-semibold: 600;
+    --fw-bold:     700;
+    --fw-black:    900;
+    
+    /* ---- Spacing ---- */
+    --space-xs:  0.25rem;
+    --space-sm:  0.5rem;
+    --space-md:  1rem;
+    --space-lg:  1.5rem;
+    --space-xl:  2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* ---- Border ---- */
+    --radius-sm:  0.375rem;
+    --radius-md:  0.5rem;
+    --radius-lg:  0.75rem;
+    --radius-xl:  1rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 50%;
+    
+    /* ---- Shadows ---- */
+    --shadow-sm:   0 1px 2px rgba(0,0,0,0.08);
+    --shadow-md:   0 4px 12px rgba(0,0,0,0.12);
+    --shadow-lg:   0 8px 30px rgba(0,0,0,0.16);
+    --shadow-xl:   0 16px 50px rgba(0,0,0,0.22);
+    --shadow-glow: 0 0 30px var(--navy-glow);
+    
+    /* ---- Layout ---- */
+    --sidebar-width: 280px;
+    --topbar-height: 60px;
+    --page-max-width: 1400px;
+    
+    /* ---- Transitions ---- */
+    --transition-fast:   150ms ease;
+    --transition-base:   250ms ease;
+    --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* ---- Z-Index ---- */
+    --z-sidebar:  100;
+    --z-topbar:   90;
+    --z-modal:    200;
+    --z-toast:    300;
+    --z-loading:  400;
+}
+
+/* ===================================================
+   DARK THEME (default)
+   =================================================== */
+[data-theme="dark"] {
+    --bg-primary:    #0D1117;
+    --bg-secondary:  #161B22;
+    --bg-tertiary:   #21262D;
+    --bg-card:       rgba(22, 27, 34, 0.8);
+    --bg-card-solid: #161B22;
+    --bg-hover:      rgba(255,255,255,0.06);
+    --bg-input:      #0D1117;
+    
+    --border-color:  rgba(255,255,255,0.1);
+    --border-hover:  rgba(255,255,255,0.2);
+    --border-focus:  var(--navy-light);
+    
+    --text-primary:   #E6EDF3;
+    --text-secondary: #8B949E;
+    --text-tertiary:  #6E7681;
+    --text-inverse:   #0D1117;
+    
+    --glass-bg:      rgba(13, 17, 23, 0.7);
+    --glass-border:  rgba(255, 255, 255, 0.08);
+    --glass-shadow:  0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    --code-bg:       #161B22;
+    
+    --scrollbar-thumb: rgba(255,255,255,0.15);
+    --scrollbar-track: transparent;
+}
+
+/* ===================================================
+   LIGHT THEME
+   =================================================== */
+[data-theme="light"] {
+    --bg-primary:    #F6F8FA;
+    --bg-secondary:  #FFFFFF;
+    --bg-tertiary:   #F3F4F6;
+    --bg-card:       rgba(255, 255, 255, 0.9);
+    --bg-card-solid: #FFFFFF;
+    --bg-hover:      rgba(0,0,0,0.03);
+    --bg-input:      #F6F8FA;
+    
+    --border-color:  rgba(0,0,0,0.1);
+    --border-hover:  rgba(0,0,0,0.2);
+    --border-focus:  var(--navy);
+    
+    --text-primary:   #1F2328;
+    --text-secondary: #57606A;
+    --text-tertiary:  #8C959F;
+    --text-inverse:   #FFFFFF;
+    
+    --glass-bg:      rgba(255, 255, 255, 0.85);
+    --glass-border:  rgba(0,0,0,0.06);
+    --glass-shadow:  0 8px 32px rgba(0,0,0,0.08);
+    
+    --code-bg:       #F6F8FA;
+    
+    --scrollbar-thumb: rgba(0,0,0,0.15);
+    --scrollbar-track: transparent;
+}

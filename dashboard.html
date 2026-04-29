@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - DBHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cairo:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/auth-dashboard.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="page-dashboard-body">
+    <main class="main-content page-dashboard">
+        <div class="dashboard-stack">
+            <section class="glass-card dashboard-section dashboard-section--hero">
+                <div class="card-header-row">
+                    <h1><i class="fas fa-gauge" aria-hidden="true"></i> Student Dashboard</h1>
+                    <div class="btn-row">
+                        <a class="btn btn-outline btn-sm" href="index.html"><i class="fas fa-book"></i> Continue Learning</a>
+                        <button class="btn btn-primary btn-sm" id="logout-btn" type="button"><i class="fas fa-right-from-bracket"></i> Logout</button>
+                    </div>
+                </div>
+                <p class="dashboard-welcome">Welcome back, <strong id="student-name">Student</strong>.</p>
+                <p id="dashboard-message" class="text-sm text-tertiary"></p>
+            </section>
+
+            <section class="glass-card dashboard-section">
+                <h3><i class="fas fa-chart-line" aria-hidden="true"></i> Overall Progress</h3>
+                <div class="progress-container" style="height:12px;margin-top:10px;">
+                    <div id="overall-progress-bar" class="progress-bar" style="width:0%;"></div>
+                </div>
+                <div class="dashboard-progress-meta">
+                    <span class="text-sm text-secondary">Course completion</span>
+                    <span class="pct" id="overall-progress-label">0%</span>
+                </div>
+                <div class="btn-row dashboard-actions">
+                    <a id="resume-btn" class="btn btn-secondary btn-sm" style="display:none;" href="index.html"><i class="fas fa-forward"></i> Resume</a>
+                    <button id="finalize-btn" class="btn btn-primary btn-sm" type="button"><i class="fas fa-medal"></i> Recalculate Final Score</button>
+                    <a id="certificate-link" class="btn btn-outline btn-sm" href="certificate.html"><i class="fas fa-certificate"></i> Certificate</a>
+                </div>
+            </section>
+
+            <section class="glass-card dashboard-section">
+                <h3><i class="fas fa-list-check" aria-hidden="true"></i> Completion Breakdown</h3>
+                <ul class="dashboard-stats">
+                    <li class="dashboard-stat">
+                        <span class="dashboard-stat__icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span>
+                        <div class="dashboard-stat__body">
+                            <span class="dashboard-stat__label">Topics</span>
+                            <span id="topics-progress" class="dashboard-stat__value">0/0</span>
+                        </div>
+                    </li>
+                    <li class="dashboard-stat">
+                        <span class="dashboard-stat__icon" aria-hidden="true"><i class="fas fa-circle-check"></i></span>
+                        <div class="dashboard-stat__body">
+                            <span class="dashboard-stat__label">Questions correct</span>
+                            <span id="questions-progress" class="dashboard-stat__value">0/0</span>
+                        </div>
+                    </li>
+                    <li class="dashboard-stat">
+                        <span class="dashboard-stat__icon" aria-hidden="true"><i class="fas fa-clipboard-list"></i></span>
+                        <div class="dashboard-stat__body">
+                            <span class="dashboard-stat__label">Tasks completed</span>
+                            <span id="tasks-progress" class="dashboard-stat__value">0/0</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="score-card" class="glass-card dashboard-section dashboard-score" style="display:none;">
+                <h3><i class="fas fa-trophy" aria-hidden="true"></i> Final Score Card</h3>
+                <ul class="key-points">
+                    <li>Total score: <strong id="score-value">0%</strong></li>
+                    <li>Level: <strong id="score-level">-</strong></li>
+                    <li>Completion date: <strong id="score-date">-</strong></li>
+                    <li>Certificate ID: <strong id="score-certificate">-</strong></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+    <script src="js/platform-api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

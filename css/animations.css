@@ -1,0 +1,256 @@
+/* ===================================================
+   DBHub — Motion & polish
+   Loaded after layout/pages; respects prefers-reduced-motion.
+   =================================================== */
+
+@keyframes db-float-up {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes db-page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes db-hero-drift {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.85;
+    }
+    50% {
+        transform: translate(3%, -2%) scale(1.03);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-2%, 2%) scale(1);
+        opacity: 0.85;
+    }
+}
+
+@keyframes db-badge-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+    70% {
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes db-glow-shift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* --- Page transitions (topics, practice, etc.) --- */
+#main-content > .page.active,
+.main-content > .page.active {
+    animation: db-page-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#topic-pages .page.active {
+    animation: db-page-enter 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* --- Landing hero --- */
+.landing-hero {
+    position: relative;
+    isolation: isolate;
+}
+
+.landing-hero::before {
+    content: '';
+    position: absolute;
+    inset: -30% -40% -40% -30%;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse 50% 60% at 25% 15%, rgba(27, 54, 93, 0.18), transparent 55%),
+        radial-gradient(ellipse 55% 50% at 75% 85%, rgba(13, 115, 119, 0.12), transparent 50%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(201, 162, 39, 0.04), transparent 60%);
+    animation: db-hero-drift 14s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.landing-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.landing-hero .hero-badge {
+    animation: db-badge-pop 0.85s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.landing-hero .hero-title {
+    animation: db-float-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s backwards;
+}
+
+.landing-hero .hero-title-accent {
+    background-image: linear-gradient(135deg, var(--navy), var(--teal), var(--gold));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: db-glow-shift 6s ease-in-out infinite;
+}
+
+.landing-hero .hero-subtitle {
+    animation: db-float-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s backwards;
+}
+
+.landing-hero .hero-desc {
+    animation: db-float-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.28s backwards;
+}
+
+.landing-hero .hero-cta {
+    animation: db-float-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.36s backwards;
+}
+
+/* --- Features grid stagger --- */
+.landing-features .section-title {
+    animation: db-float-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards;
+}
+
+.features-grid .feature-card {
+    animation: db-float-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.features-grid .feature-card:nth-child(1) {
+    animation-delay: 0.08s;
+}
+.features-grid .feature-card:nth-child(2) {
+    animation-delay: 0.14s;
+}
+.features-grid .feature-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.features-grid .feature-card:nth-child(4) {
+    animation-delay: 0.26s;
+}
+.features-grid .feature-card:nth-child(5) {
+    animation-delay: 0.32s;
+}
+.features-grid .feature-card:nth-child(6) {
+    animation-delay: 0.38s;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px) scale(1.01);
+}
+
+/* --- Glass cards --- */
+.glass-card {
+    transition:
+        box-shadow var(--transition-base),
+        border-color var(--transition-base),
+        transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        var(--glass-shadow),
+        0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Quiz / content blocks */
+.quiz-container {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.quiz-container:hover {
+    transform: translateY(-1px);
+}
+
+/* --- Buttons tactile feedback --- */
+.btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* --- Sidebar polish --- */
+.sidebar-nav-item a {
+    transition:
+        transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.sidebar-nav-item a:hover {
+    transform: translateX(4px);
+}
+
+/* --- Dashboard & auth shells --- */
+.page-dashboard-body .dashboard-stack .dashboard-section.glass-card,
+.page-dashboard-body .dashboard-stack .glass-card {
+    animation: db-float-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.page-dashboard-body .dashboard-stack .glass-card:nth-child(1) {
+    animation-delay: 0.04s;
+}
+.page-dashboard-body .dashboard-stack .glass-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.page-dashboard-body .dashboard-stack .glass-card:nth-child(3) {
+    animation-delay: 0.16s;
+}
+.page-dashboard-body .dashboard-stack .glass-card:nth-child(4) {
+    animation-delay: 0.22s;
+}
+
+.page-auth-body .auth-brand {
+    animation: db-float-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.page-auth-body .auth-card {
+    animation: db-float-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s backwards;
+}
+
+/* ===================================================
+   Reduced motion
+   =================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .landing-hero::before,
+    .landing-hero .hero-title-accent {
+        animation: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .feature-card:hover,
+    .glass-card:hover {
+        transform: none;
+    }
+
+    .sidebar-nav-item a:hover {
+        transform: none;
+    }
+}

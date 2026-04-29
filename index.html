@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBHub — Advanced Database Learning Platform | NMU</title>
+    <meta name="description" content="Interactive MySQL learning platform for New Mansoura University — tutorials, SQL editor, quizzes, and project database builder.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗄️</text></svg>">
+</head>
+<body>
+    <!-- ===================== LOADING SCREEN ===================== -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo" style="background: transparent; border-radius: 50%; overflow: hidden; width: 100px; height: 100px;">
+                <img src="logo.jpg" alt="NMU Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            </div>
+            <h1 class="loading-title">DBHub</h1>
+            <p class="loading-subtitle">Advanced Database Learning Platform</p>
+            <p class="hero-desc" style="font-size: 0.8rem; margin-top: 0.5rem;">New Mansoura University - Faculty of Computer Science</p>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== SIDEBAR NAV ===================== -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div style="width: 50px; height: 50px; margin: 0; display: flex; align-items: center; justify-content: center; border-radius: 50%; overflow: hidden;">
+                <img src="logo.jpg" alt="NMU Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            </div>
+            <div class="sidebar-brand">
+                <h2>DBHub</h2>
+                <span>NMU — ADB Course</span>
+            </div>
+            <button id="sidebar-toggle-close" class="sidebar-close" aria-label="Close sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-item active" data-page="landing">
+                <a href="#landing"><i class="fas fa-home"></i><span class="nav-label">Home</span></a>
+            </li>
+            
+            <li class="sidebar-divider"></li>
+            <li class="sidebar-section-title">MySQL HOME</li>
+            
+            <li class="sidebar-nav-item" data-page="mysql-intro">
+                <a href="#mysql-intro"><i class="fas fa-star"></i><span class="nav-label">MySQL Intro</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="mysql-rdbms">
+                <a href="#mysql-rdbms"><i class="fas fa-database"></i><span class="nav-label">MySQL RDBMS</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="mysql-sql">
+                <a href="#mysql-sql"><i class="fas fa-code"></i><span class="nav-label">MySQL SQL</span></a>
+            </li>
+            
+            <li class="sidebar-divider"></li>
+            <li class="sidebar-section-title">MySQL SELECT</li>
+            
+            <li class="sidebar-nav-item" data-page="select">
+                <a href="#select"><i class="fas fa-magnifying-glass"></i><span class="nav-label">SELECT</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="select-distinct">
+                <a href="#select-distinct"><i class="fas fa-filter"></i><span class="nav-label">SELECT DISTINCT</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="where">
+                <a href="#where"><i class="fas fa-search"></i><span class="nav-label">WHERE</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="order-by">
+                <a href="#order-by"><i class="fas fa-sort"></i><span class="nav-label">ORDER BY</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="and">
+                <a href="#and"><i class="fas fa-check-double"></i><span class="nav-label">AND</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="or">
+                <a href="#or"><i class="fas fa-check"></i><span class="nav-label">OR</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="not">
+                <a href="#not"><i class="fas fa-times"></i><span class="nav-label">NOT</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="insert-into">
+                <a href="#insert-into"><i class="fas fa-plus"></i><span class="nav-label">INSERT INTO</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="null-values">
+                <a href="#null-values"><i class="fas fa-circle-question"></i><span class="nav-label">NULL Values</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="update">
+                <a href="#update"><i class="fas fa-pen-to-square"></i><span class="nav-label">UPDATE</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="delete">
+                <a href="#delete"><i class="fas fa-trash"></i><span class="nav-label">DELETE</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="limit">
+                <a href="#limit"><i class="fas fa-stop"></i><span class="nav-label">LIMIT</span></a>
+            </li>
+            
+            <li class="sidebar-divider"></li>
+            <li class="sidebar-section-title">MySQL Functions</li>
+            
+            <li class="sidebar-nav-item" data-page="min-max">
+                <a href="#min-max"><i class="fas fa-arrows-up-down"></i><span class="nav-label">MIN() MAX()</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="count">
+                <a href="#count"><i class="fas fa-hashtag"></i><span class="nav-label">COUNT()</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="sum">
+                <a href="#sum"><i class="fas fa-plus"></i><span class="nav-label">SUM()</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="avg">
+                <a href="#avg"><i class="fas fa-calculator"></i><span class="nav-label">AVG()</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="like">
+                <a href="#like"><i class="fas fa-font"></i><span class="nav-label">LIKE</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="wildcards">
+                <a href="#wildcards"><i class="fas fa-asterisk"></i><span class="nav-label">Wildcards</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="in">
+                <a href="#in"><i class="fas fa-list"></i><span class="nav-label">IN</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="between">
+                <a href="#between"><i class="fas fa-arrows-left-right"></i><span class="nav-label">BETWEEN</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="aliases">
+                <a href="#aliases"><i class="fas fa-tag"></i><span class="nav-label">Aliases</span></a>
+            </li>
+            
+            <li class="sidebar-divider"></li>
+            <li class="sidebar-section-title">MySQL Joins</li>
+            
+            <li class="sidebar-nav-item" data-page="joins">
+                <a href="#joins"><i class="fas fa-link"></i><span class="nav-label">Joins</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="inner-join">
+                <a href="#inner-join"><i class="fas fa-intersection"></i><span class="nav-label">INNER JOIN</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="left-join">
+                <a href="#left-join"><i class="fas fa-arrow-left"></i><span class="nav-label">LEFT JOIN</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="right-join">
+                <a href="#right-join"><i class="fas fa-arrow-right"></i><span class="nav-label">RIGHT JOIN</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="cross-join">
+                <a href="#cross-join"><i class="fas fa-arrows-cross"></i><span class="nav-label">CROSS JOIN</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="self-join">
+                <a href="#self-join"><i class="fas fa-rotate"></i><span class="nav-label">Self Join</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="union">
+                <a href="#union"><i class="fas fa-layer-group"></i><span class="nav-label">UNION</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="group-by">
+                <a href="#group-by"><i class="fas fa-object-group"></i><span class="nav-label">GROUP BY</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="having">
+                <a href="#having"><i class="fas fa-filter"></i><span class="nav-label">HAVING</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="exists">
+                <a href="#exists"><i class="fas fa-check-circle"></i><span class="nav-label">EXISTS</span></a>
+            </li>
+            
+            <li class="sidebar-divider"></li>
+            <li class="sidebar-section-title">MySQL Database</li>
+            
+            <li class="sidebar-nav-item" data-page="create-db">
+                <a href="#create-db"><i class="fas fa-database"></i><span class="nav-label">Create DB</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="drop-db">
+                <a href="#drop-db"><i class="fas fa-trash"></i><span class="nav-label">Drop DB</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="create-table">
+                <a href="#create-table"><i class="fas fa-table"></i><span class="nav-label">Create Table</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="drop-table">
+                <a href="#drop-table"><i class="fas fa-trash"></i><span class="nav-label">Drop Table</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="alter-table">
+                <a href="#alter-table"><i class="fas fa-pen"></i><span class="nav-label">Alter Table</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="constraints">
+                <a href="#constraints"><i class="fas fa-lock"></i><span class="nav-label">Constraints</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="not-null">
+                <a href="#not-null"><i class="fas fa-ban"></i><span class="nav-label">Not Null</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="unique">
+                <a href="#unique"><i class="fas fa-fingerprint"></i><span class="nav-label">Unique</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="primary-key">
+                <a href="#primary-key"><i class="fas fa-key"></i><span class="nav-label">Primary Key</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="foreign-key">
+                <a href="#foreign-key"><i class="fas fa-link"></i><span class="nav-label">Foreign Key</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="check">
+                <a href="#check"><i class="fas fa-check-square"></i><span class="nav-label">Check</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="default">
+                <a href="#default"><i class="fas fa-cog"></i><span class="nav-label">Default</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="create-index">
+                <a href="#create-index"><i class="fas fa-bolt"></i><span class="nav-label">Create Index</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="auto-increment">
+                <a href="#auto-increment"><i class="fas fa-arrow-up"></i><span class="nav-label">Auto Increment</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="dates">
+                <a href="#dates"><i class="fas fa-calendar"></i><span class="nav-label">Dates</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="views">
+                <a href="#views"><i class="fas fa-eye"></i><span class="nav-label">Views</span></a>
+            </li>
+            
+            <li class="sidebar-divider"></li>
+            
+            <li class="sidebar-nav-item" data-page="practice">
+                <a href="#practice"><i class="fas fa-laptop-code"></i><span class="nav-label">MySQL Editor</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="quiz">
+                <a href="#quiz"><i class="fas fa-clipboard-question"></i><span class="nav-label">MySQL Quiz</span></a>
+            </li>
+            <li class="sidebar-nav-item" data-page="builder">
+                <a href="#builder"><i class="fas fa-hammer"></i><span class="nav-label">Project Builder</span></a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+                <span>Toggle Theme</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===================== MOBILE TOPBAR ===================== -->
+    <header id="topbar" class="topbar">
+        <button id="sidebar-toggle-open" class="topbar-menu" aria-label="Open sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="topbar-brand">
+            <i class="fas fa-database" style="font-size: 1.5rem; color: var(--navy);"></i>
+            <span>DBHub</span>
+        </div>
+        <div class="topbar-actions">
+            <button id="theme-toggle-mobile" class="theme-toggle-sm" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main id="main-content" class="main-content">
+
+        <!-- LANDING PAGE -->
+        <section id="page-landing" class="page active" data-page="landing">
+            <div class="landing-hero">
+                <div class="hero-badge" style="width: 120px; height: 120px; padding: 0; border-radius: 50%; overflow: hidden;">
+                    <img src="logo.jpg" alt="NMU Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h1 class="hero-title">
+                    <span>DB</span><span class="hero-title-accent">Hub</span>
+                </h1>
+                <p class="hero-subtitle">Your Interactive MySQL Learning Companion</p>
+                <p class="hero-desc">New Mansoura University — Faculty of Computer Science & Engineering<br>Advanced Databases Course with Eng. Salma</p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-lg" onclick="navigateTo('mysql-intro')">
+                        <i class="fas fa-rocket"></i> Start Learning
+                    </button>
+                    <button class="btn btn-outline btn-lg" onclick="navigateTo('practice')">
+                        <i class="fas fa-laptop-code"></i> SQL Practice
+                    </button>
+                </div>
+            </div>
+
+            <div class="landing-features">
+                <h2 class="section-title">Platform Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card" onclick="navigateTo('mysql-intro')">
+                        <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Structured Learning</h3>
+                        <p>Progressive MySQL tutorials from basics to advanced topics with bilingual explanations (English & Egyptian Arabic)</p>
+                    </div>
+                    <div class="feature-card" onclick="navigateTo('practice')">
+                        <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>SQL Practice Editor</h3>
+                        <p>Write and test SQL queries in-browser with instant feedback and line-by-line code explanations</p>
+                    </div>
+                    <div class="feature-card" onclick="navigateTo('tools')">
+                        <div class="feature-icon"><i class="fas fa-toolbox"></i></div>
+                        <h3>Database Tools</h3>
+                        <p>Access free database design tools, ER diagram creators, and MySQL resources all in one place</p>
+                    </div>
+                    <div class="feature-card" onclick="navigateTo('builder')">
+                        <div class="feature-icon"><i class="fas fa-hammer"></i></div>
+                        <h3>Project Builder</h3>
+                        <p>Step-by-step guide to designing and building your complete project database from scratch</p>
+                    </div>
+                    <div class="feature-card" onclick="document.querySelector('[data-page=select]').click()">
+                        <div class="feature-icon"><i class="fas fa-clipboard-question"></i></div>
+                        <h3>Interactive Quizzes</h3>
+                        <p>Test your knowledge with topic-specific quizzes featuring detailed explanations in Egyptian Arabic</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-video"></i></div>
+                        <h3>Video Tutorials</h3>
+                        <p>Curated video explanations from W3Schools Clinic and other educational sources for each topic</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOPIC PAGES CONTAINER -->
+        <div id="topic-pages"></div>
+
+        <!-- PRACTICE PAGE -->
+        <section id="page-practice" class="page" data-page="practice">
+            <div class="page-header">
+                <h1><i class="fas fa-laptop-code" style="color: var(--teal); margin-right: var(--space-sm);"></i>SQL Practice Arena</h1>
+                <p>Write, test, and experiment with SQL queries in a safe environment</p>
+            </div>
+
+            <div class="practice-tabs">
+                <button class="practice-tab active" data-tab="editor">SQL Editor</button>
+                <button class="practice-tab" data-tab="exercises">Exercises</button>
+                <button class="practice-tab" data-tab="challenges">Challenges</button>
+            </div>
+
+            <div id="practice-editor" class="practice-content">
+                <div class="glass-card" style="margin-bottom: var(--space-lg);">
+                    <div class="card-header-row">
+                        <h3><i class="fas fa-database"></i> Sample Database: University</h3>
+                        <button class="btn btn-sm btn-outline" onclick="resetDatabase()">
+                            <i class="fas fa-rotate-right"></i> Reset
+                        </button>
+                    </div>
+                    <p class="text-sm" style="margin-bottom: var(--space-md);">Tables: <code>students</code>, <code>courses</code>, <code>enrollments</code>, <code>professors</code></p>
+                    
+                    <div class="sql-editor">
+                        <div class="sql-editor-header">
+                            <span><i class="fas fa-code"></i> Query Editor</span>
+                            <div class="btn-row">
+                                <button class="btn btn-sm btn-outline" onclick="clearEditor()">
+                                    <i class="fas fa-eraser"></i> Clear
+                                </button>
+                                <button class="btn btn-sm btn-primary" onclick="runQuery()">
+                                    <i class="fas fa-play"></i> Run Query
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="sql-editor" class="sql-editor-textarea" placeholder="-- Write your SQL query here
+-- Example: SELECT * FROM students;">
+-- Try a query!
+SELECT * FROM students;</textarea>
+                    </div>
+                    
+                    <div id="sql-output" class="sql-output" style="display: none;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-sm);">
+                            <span style="font-weight: var(--fw-semibold);"><i class="fas fa-terminal"></i> Results</span>
+                            <span id="query-time" class="text-xs text-tertiary"></span>
+                        </div>
+                        <div id="query-results"></div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h4><i class="fas fa-lightbulb" style="color: var(--amber);"></i> Practice Ideas</h4>
+                    <ul class="key-points">
+                        <li>Get all students with GPA above 3.0</li>
+                        <li>Count how many students enrolled in each course</li>
+                        <li>Find professors teaching more than 2 courses</li>
+                        <li>Update a student's email address</li>
+                        <li>Delete all enrollments for a specific course</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="practice-exercises" class="practice-content" style="display: none;">
+                <!-- Exercise 1 -->
+                <div class="glass-card" style="margin-bottom: var(--space-lg);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h4><i class="fas fa-star" style="color: var(--warning);"></i> Exercise 1: SELECT Basics</h4>
+                        <span class="badge" style="background: var(--success); color: white;">Easy</span>
+                    </div>
+                    <p>Write a query to select the <code>name</code>, <code>email</code>, and <code>gpa</code> of all students.</p>
+                    <div class="code-block" style="margin-top: var(--space-md);">
+                        <div class="code-header"><span>Expected Output</span></div>
+                        <div class="code-content">name       | email              | gpa
+-----------|-------------------|------
+Ahmed      | ahmed@nmu.edu.eg  | 3.75
+Sara       | sara@nmu.edu.eg   | 3.92
+Mohamed    | mohamed@nmu.edu.eg| 3.45</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="margin-top: var(--space-md);" onclick="loadExercise('SELECT name, email, gpa FROM students;')">
+                        <i class="fas fa-code"></i> Try in Editor
+                    </button>
+                </div>
+
+                <!-- Exercise 2 -->
+                <div class="glass-card" style="margin-bottom: var(--space-lg);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h4><i class="fas fa-star" style="color: var(--warning);"></i> Exercise 2: WHERE Clause</h4>
+                        <span class="badge" style="background: var(--success); color: white;">Easy</span>
+                    </div>
+                    <p>Find all students with GPA greater than or equal to 3.5 who are majoring in 'Computer Science'.</p>
+                    <div class="code-block" style="margin-top: var(--space-md);">
+                        <div class="code-header"><span>Hint</span></div>
+                        <div class="code-content">-- Use AND to combine conditions
+SELECT * FROM students
+WHERE gpa >= 3.5 AND major = 'Computer Science';</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="margin-top: var(--space-md);" onclick="loadExercise('SELECT * FROM students WHERE gpa >= 3.5 AND major = \'Computer Science\';')">
+                        <i class="fas fa-code"></i> Try in Editor
+                    </button>
+                </div>
+
+                <!-- Exercise 3 -->
+                <div class="glass-card" style="margin-bottom: var(--space-lg);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h4><i class="fas fa-star" style="color: var(--warning);"></i> Exercise 3: JOIN Tables</h4>
+                        <span class="badge" style="background: var(--warning); color: white;">Medium</span>
+                    </div>
+                    <p>List all students along with the courses they are enrolled in. Show student name and course name.</p>
+                    <div class="code-block" style="margin-top: var(--space-md);">
+                        <div class="code-header"><span>Hint</span></div>
+                        <div class="code-content">-- Join students, enrollments, and courses
+SELECT s.name, c.course_name
+FROM students s
+JOIN enrollments e ON s.id = e.student_id
+JOIN courses c ON e.course_id = c.id;</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="margin-top: var(--space-md);" onclick="loadExercise('SELECT s.name, c.course_name FROM students s JOIN enrollments e ON s.id = e.student_id JOIN courses c ON e.course_id = c.id;')">
+                        <i class="fas fa-code"></i> Try in Editor
+                    </button>
+                </div>
+
+                <!-- Exercise 4 -->
+                <div class="glass-card" style="margin-bottom: var(--space-lg);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h4><i class="fas fa-star" style="color: var(--warning);"></i> Exercise 4: Aggregate Functions</h4>
+                        <span class="badge" style="background: var(--warning); color: white;">Medium</span>
+                    </div>
+                    <p>Calculate the average GPA for each major and show only those with average GPA above 3.0.</p>
+                    <div class="code-block" style="margin-top: var(--space-md);">
+                        <div class="code-header"><span>Hint</span></div>
+                        <div class="code-content">-- Use GROUP BY and HAVING
+SELECT major, AVG(gpa) AS avg_gpa
+FROM students
+GROUP BY major
+HAVING AVG(gpa) > 3.0;</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="margin-top: var(--space-md);" onclick="loadExercise('SELECT major, AVG(gpa) AS avg_gpa FROM students GROUP BY major HAVING AVG(gpa) > 3.0;')">
+                        <i class="fas fa-code"></i> Try in Editor
+                    </button>
+                </div>
+
+                <!-- Exercise 5 -->
+                <div class="glass-card" style="margin-bottom: var(--space-lg);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h4><i class="fas fa-star" style="color: var(--warning);"></i> Exercise 5: Subquery</h4>
+                        <span class="badge" style="background: var(--error); color: white;">Hard</span>
+                    </div>
+                    <p>Find students who are NOT enrolled in any courses (hint: use NOT EXISTS or LEFT JOIN with IS NULL).</p>
+                    <div class="code-block" style="margin-top: var(--space-md);">
+                        <div class="code-header"><span>Solution</span></div>
+                        <div class="code-content">-- Using LEFT JOIN
+SELECT s.name
+FROM students s
+LEFT JOIN enrollments e ON s.id = e.student_id
+WHERE e.student_id IS NULL;</div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="margin-top: var(--space-md);" onclick="loadExercise('SELECT s.name FROM students s LEFT JOIN enrollments e ON s.id = e.student_id WHERE e.student_id IS NULL;')">
+                        <i class="fas fa-code"></i> Try in Editor
+                    </button>
+                </div>
+            </div>
+
+            <div id="practice-challenges" class="practice-content" style="display: none;">
+                <!-- Challenge 1 -->
+                <div class="glass-card" style="margin-bottom: var(--space-lg); border: 2px solid var(--warning);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h4><i class="fas fa-trophy" style="color: var(--warning);"></i> Challenge 1: Complex JOIN</h4>
+                        <span class="badge" style="background: var(--warning); color: white;">Medium</span>
+                    </div>
+                    <p>Create a report showing: Student Name, Course Name, Professor Name, and Grade for all enrollments.</p>
+                    <p class="text-sm" style="margin-top: var(--space-sm);"><strong>Tables needed:</strong> students, enrollments, courses, professors</p>
+                    <details style="margin-top: var(--space-md);">
+                        <summary style="cursor: pointer; color: var(--navy); font-weight: var(--fw-semibold);">Show Solution</summary>
+                        <div class="code-block" style="margin-top: var(--space-sm);">
+                            <div class="code-content">SELECT 
+    s.name AS student,
+    c.course_name,
+    p.name AS professor,
+    e.grade
+FROM students s
+JOIN enrollments e ON s.id = e.student_id
+JOIN courses c ON e.course_id = c.id
+JOIN professors p ON c.professor_id = p.id;</div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Challenge 2 -->
+                <div class="glass-card" style="margin-bottom: var(--space-lg); border: 2px solid var(--warning);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h4><i class="fas fa-trophy" style="color: var(--warning);"></i> Challenge 2: Top Performers</h4>
+                        <span class="badge" style="background: var(--error); color: white;">Hard</span>
+                    </div>
+                    <p>Find the top 3 students with the highest average grade across all their courses.</p>
+                    <details style="margin-top: var(--space-md);">
+                        <summary style="cursor: pointer; color: var(--navy); font-weight: var(--fw-semibold);">Show Solution</summary>
+                        <div class="code-block" style="margin-top: var(--space-sm);">
+                            <div class="code-content">SELECT 
+    s.name,
+    AVG(CASE 
+        WHEN e.grade = 'A' THEN 4.0
+        WHEN e.grade = 'B' THEN 3.0
+        WHEN e.grade = 'C' THEN 2.0
+        ELSE 0 
+    END) AS avg_grade_points
+FROM students s
+JOIN enrollments e ON s.id = e.student_id
+GROUP BY s.id, s.name
+ORDER BY avg_grade_points DESC
+LIMIT 3;</div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Challenge 3 -->
+                <div class="glass-card" style="margin-bottom: var(--space-lg); border: 2px solid var(--warning);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h4><i class="fas fa-trophy" style="color: var(--warning);"></i> Challenge 3: Course Statistics</h4>
+                        <span class="badge" style="background: var(--error); color: white;">Hard</span>
+                    </div>
+                    <p>For each course, show: course name, total enrollments, number of A grades, and percentage of students who got A.</p>
+                    <details style="margin-top: var(--space-md);">
+                        <summary style="cursor: pointer; color: var(--navy); font-weight: var(--fw-semibold);">Show Solution</summary>
+                        <div class="code-block" style="margin-top: var(--space-sm);">
+                            <div class="code-content">SELECT 
+    c.course_name,
+    COUNT(e.student_id) AS total_enrollments,
+    SUM(CASE WHEN e.grade = 'A' THEN 1 ELSE 0 END) AS a_grades,
+    ROUND(
+        SUM(CASE WHEN e.grade = 'A' THEN 1 ELSE 0 END) * 100.0 / COUNT(e.student_id),
+        2
+    ) AS a_percentage
+FROM courses c
+LEFT JOIN enrollments e ON c.id = e.course_id
+GROUP BY c.id, c.course_name;</div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Challenge 4 -->
+                <div class="glass-card" style="margin-bottom: var(--space-lg); border: 2px solid var(--warning);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <h4><i class="fas fa-trophy" style="color: var(--warning);"></i> Challenge 4: Recursive CTE (Advanced)</h4>
+                        <span class="badge" style="background: var(--navy); color: white;">Expert</span>
+                    </div>
+                    <p>Assuming you have an employees table with a manager_id column, write a query to show the complete hierarchy from CEO down to all employees.</p>
+                    <p class="text-sm text-tertiary">This requires Common Table Expressions (CTEs) - an advanced MySQL feature.</p>
+                    <details style="margin-top: var(--space-md);">
+                        <summary style="cursor: pointer; color: var(--navy); font-weight: var(--fw-semibold);">Show Solution</summary>
+                        <div class="code-block" style="margin-top: var(--space-sm);">
+                            <div class="code-content">WITH RECURSIVE employee_hierarchy AS (
+    -- Base case: CEO (no manager)
+    SELECT id, name, manager_id, 0 AS level
+    FROM employees
+    WHERE manager_id IS NULL
+    
+    UNION ALL
+    
+    -- Recursive case: employees with managers
+    SELECT e.id, e.name, e.manager_id, eh.level + 1
+    FROM employees e
+    JOIN employee_hierarchy eh ON e.manager_id = eh.id
+)
+SELECT 
+    REPEAT('  ', level) || name AS hierarchy
+FROM employee_hierarchy
+ORDER BY level, name;</div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="glass-card" style="background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(27, 54, 93, 0.05));">
+                    <h4><i class="fas fa-lightbulb" style="color: var(--gold);"></i> More Challenges</h4>
+                    <p class="text-sm">Want more practice? Try these additional resources:</p>
+                    <ul class="key-points">
+                        <li><a href="https://www.hackerrank.com/domains/sql" target="_blank">HackerRank SQL Challenges</a></li>
+                        <li><a href="https://leetcode.com/problemset/database/" target="_blank">LeetCode Database Problems</a></li>
+                        <li><a href="https://sqlbolt.com/" target="_blank">SQLBolt Interactive Lessons</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIZ PAGE -->
+        <section id="page-quiz" class="page" data-page="quiz">
+            <div class="page-header">
+                <h1><i class="fas fa-clipboard-question" style="color: var(--navy); margin-right: var(--space-sm);"></i>MySQL Quiz</h1>
+                <p>Test your MySQL knowledge with these interactive questions</p>
+            </div>
+
+            <div id="quiz-container" class="glass-card" style="max-width: 800px; margin: 0 auto;">
+                <div id="quiz-intro" style="text-align: center; padding: var(--space-xl);">
+                    <i class="fas fa-graduation-cap" style="font-size: 4rem; color: var(--navy); margin-bottom: var(--space-md);"></i>
+                    <h2>MySQL Knowledge Test</h2>
+                    <p style="margin-bottom: var(--space-lg);">This quiz covers topics from the MySQL tutorials. You'll receive immediate feedback with explanations in both English and Arabic.</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-md); margin-bottom: var(--space-lg);">
+                        <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                            <strong>25 Questions</strong>
+                            <p class="text-sm">Comprehensive coverage</p>
+                        </div>
+                        <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                            <strong>English + Arabic</strong>
+                            <p class="text-sm">Bilingual explanations</p>
+                        </div>
+                        <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                            <strong>Instant Feedback</strong>
+                            <p class="text-sm">Learn as you go</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg" onclick="startQuiz()">
+                        <i class="fas fa-play"></i> Start Quiz
+                    </button>
+                </div>
+
+                <div id="quiz-question-container" style="display: none; padding: var(--space-xl);">
+                    <div id="quiz-progress" style="margin-bottom: var(--space-lg);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-sm);">
+                            <span>Question <span id="current-q-num">1</span> of <span id="total-q-num">25</span></span>
+                            <span id="quiz-score">Score: 0/0</span>
+                        </div>
+                        <div class="progress-container">
+                            <div id="quiz-progress-bar" class="progress-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <div id="question-text" style="font-size: var(--fs-lg); font-weight: var(--fw-semibold); margin-bottom: var(--space-lg);">
+                        Question goes here...
+                    </div>
+
+                    <div id="question-options" style="display: grid; gap: var(--space-md); margin-bottom: var(--space-lg);">
+                        <!-- Options will be inserted here -->
+                    </div>
+
+                    <div id="quiz-feedback" style="display: none; margin-bottom: var(--space-lg); padding: var(--space-md); border-radius: var(--radius-lg);">
+                        <div id="feedback-content"></div>
+                    </div>
+
+                    <div id="quiz-actions" style="display: flex; justify-content: space-between; align-items: center;">
+                        <button id="btn-submit" class="btn btn-primary" onclick="submitFullQuizAnswer()">
+                            <i class="fas fa-check"></i> Submit Answer
+                        </button>
+                        <button id="btn-next" class="btn btn-secondary" style="display: none;" onclick="nextQuizQuestion()">
+                            Next Question <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quiz-results" style="display: none; text-align: center; padding: var(--space-xl);">
+                    <i id="result-icon" class="fas fa-trophy" style="font-size: 4rem; margin-bottom: var(--space-md);"></i>
+                    <h2 id="result-title">Quiz Complete!</h2>
+                    <p id="result-message" style="margin-bottom: var(--space-lg);">You scored X out of Y</p>
+                    <div id="result-breakdown" style="margin-bottom: var(--space-lg);">
+                        <!-- Detailed results -->
+                    </div>
+                    <div style="display: flex; gap: var(--space-md); justify-content: center;">
+                        <button class="btn btn-primary" onclick="restartQuiz()">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                        <button class="btn btn-outline" onclick="navigateTo('mysql-intro')">
+                            <i class="fas fa-book"></i> Back to Tutorials
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLS PAGE -->
+        <section id="page-tools" class="page" data-page="tools">
+            <div class="page-header">
+                <h1><i class="fas fa-toolbox" style="color: var(--teal); margin-right: var(--space-sm);"></i>Database Tools</h1>
+                <p>Free tools and resources for database design and management</p>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-draw-polygon"></i></div>
+                    <h3>draw.io / diagrams.net</h3>
+                    <p>Free online diagram tool for creating ER diagrams, schema designs, and database models.</p>
+                    <a href="https://app.diagrams.net/" target="_blank" class="btn btn-primary btn-sm" style="margin-top: var(--space-md);">
+                        <i class="fas fa-external-link-alt"></i> Open Tool
+                    </a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-database"></i></div>
+                    <h3>DB Fiddle</h3>
+                    <p>Online SQL playground supporting MySQL, PostgreSQL, and SQLite. Test queries in different databases.</p>
+                    <a href="https://www.db-fiddle.com/" target="_blank" class="btn btn-primary btn-sm" style="margin-top: var(--space-md);">
+                        <i class="fas fa-external-link-alt"></i> Open Tool
+                    </a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-table"></i></div>
+                    <h3>Mockaroo</h3>
+                    <p>Generate realistic test data for your database. Create thousands of rows with various data types.</p>
+                    <a href="https://mockaroo.com/" target="_blank" class="btn btn-primary btn-sm" style="margin-top: var(--space-md);">
+                        <i class="fas fa-external-link-alt"></i> Open Tool
+                    </a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-code"></i></div>
+                    <h3>SQL Formatting</h3>
+                    <p>Instant SQL formatter to beautify and standardize your SQL queries with proper indentation.</p>
+                    <a href="https://sqlformat.org/" target="_blank" class="btn btn-primary btn-sm" style="margin-top: var(--space-md);">
+                        <i class="fas fa-external-link-alt"></i> Open Tool
+                    </a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-sitemap"></i></div>
+                    <h3>QuickDBD</h3>
+                    <p>Quick Database Diagrams — draw schema diagrams using simple keyboard shortcuts and export to SQL.</p>
+                    <a href="https://www.quickdatabasediagrams.com/" target="_blank" class="btn btn-primary btn-sm" style="margin-top: var(--space-md);">
+                        <i class="fas fa-external-link-alt"></i> Open Tool
+                    </a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>W3Schools SQL</h3>
+                    <p>Comprehensive SQL reference with interactive examples. Great for quick syntax lookups.</p>
+                    <a href="https://www.w3schools.com/sql/" target="_blank" class="btn btn-primary btn-sm" style="margin-top: var(--space-md);">
+                        <i class="fas fa-external-link-alt"></i> Open Reference
+                    </a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-book"></i></div>
+                    <h3>MySQL Documentation</h3>
+                    <p>Official MySQL 8.0 reference manual with detailed explanations of all features and functions.</p>
+                    <a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" class="btn btn-primary btn-sm" style="margin-top: var(--space-md);">
+                        <i class="fas fa-external-link-alt"></i> Open Docs
+                    </a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Explain MySQL</h3>
+                    <p>Visual explanation of SQL queries. Understand how MySQL executes your queries.</p>
+                    <a href="https://sqlflow.io/" target="_blank" class="btn btn-primary btn-sm" style="margin-top: var(--space-md);">
+                        <i class="fas fa-external-link-alt"></i> Open Tool
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT BUILDER PAGE -->
+        <section id="page-builder" class="page" data-page="builder">
+            <div class="page-header">
+                <h1><i class="fas fa-hammer" style="color: var(--amber); margin-right: var(--space-sm);"></i>Project Database Builder</h1>
+                <p>Build your complete project database from scratch, step by step</p>
+            </div>
+
+            <div class="builder-steps">
+                <div class="builder-step active" data-step="1">
+                    <span class="builder-step-num">1</span>
+                    <span>Requirements</span>
+                </div>
+                <div class="builder-step" data-step="2">
+                    <span class="builder-step-num">2</span>
+                    <span>ER Diagram</span>
+                </div>
+                <div class="builder-step" data-step="3">
+                    <span class="builder-step-num">3</span>
+                    <span>Schema Design</span>
+                </div>
+                <div class="builder-step" data-step="4">
+                    <span class="builder-step-num">4</span>
+                    <span>Normalization</span>
+                </div>
+                <div class="builder-step" data-step="5">
+                    <span class="builder-step-num">5</span>
+                    <span>Create Tables</span>
+                </div>
+                <div class="builder-step" data-step="6">
+                    <span class="builder-step-num">6</span>
+                    <span>Relationships</span>
+                </div>
+                <div class="builder-step" data-step="7">
+                    <span class="builder-step-num">7</span>
+                    <span>Test & Optimize</span>
+                </div>
+            </div>
+
+            <div id="builder-content" class="builder-content">
+                <!-- Step 1: Requirements -->
+                <div id="builder-step-1" class="builder-step-content">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-clipboard-list" style="color: var(--teal);"></i> Step 1: Gather Requirements</h3>
+                        <p>Before writing any SQL, understand what your project needs to store and manage.</p>
+                        
+                        <div class="explanation-box" dir="rtl">
+                            <h5>بالعربي: تحليل المتطلبات</h5>
+                            قبل ما تبدأ في تصميم قاعدة البيانات، لازم تفهم المشروع كويس. اكتب كل الحاجات اللي لازم تتخزن: المستخدمين هيعملوا ايه؟ ايه البيانات اللي هتتجمع؟ مين هيتفاعل مع مين؟
+                        </div>
+
+                        <h4 style="margin-top: var(--space-lg);">Requirements Checklist:</h4>
+                        <div style="display: grid; gap: var(--space-md);">
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" class="req-check"> 
+                                    <span><strong>Entities:</strong> What are the main objects? (Users, Products, Orders)</span>
+                                </label>
+                            </div>
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" class="req-check"> 
+                                    <span><strong>Attributes:</strong> What data describes each entity? (Name, Email, Price)</span>
+                                </label>
+                            </div>
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" class="req-check"> 
+                                    <span><strong>Relationships:</strong> How do entities connect? (One-to-One, One-to-Many)</span>
+                                </label>
+                            </div>
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" class="req-check"> 
+                                    <span><strong>Operations:</strong> What actions will users perform? (CRUD)</span>
+                                </label>
+                            </div>
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" class="req-check"> 
+                                    <span><strong>Constraints:</strong> What rules must always be true? (Unique emails)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="code-block" style="margin-top: var(--space-lg);">
+                            <div class="code-header">
+                                <span>Example: Library System Requirements</span>
+                            </div>
+                            <div class="code-content">
+Entities:
+- Students (student_id, name, email, phone, major)
+- Books (book_id, title, author, isbn, category, available)
+- Borrowings (borrowing_id, student_id, book_id, borrow_date, return_date)
+
+Relationships:
+- Student → Borrowings (One-to-Many)
+- Book → Borrowings (One-to-Many)
+- Many-to-Many: Students can borrow many Books</div>
+                        </div>
+                        
+                        <div id="req-progress" style="margin-top: var(--space-lg);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-sm);">
+                                <span>Completion:</span>
+                                <span id="req-percent">0%</span>
+                            </div>
+                            <div class="progress-container">
+                                <div id="req-progress-bar" class="progress-bar" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: ER Diagram -->
+                <div id="builder-step-2" class="builder-step-content" style="display: none;">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-draw-polygon" style="color: var(--teal);"></i> Step 2: Create ER Diagram</h3>
+                        <p>Visualize your database structure using Entity-Relationship diagrams.</p>
+                        
+                        <div class="explanation-box" dir="rtl">
+                            <h5>بالعربي: الرسم البياني ER</h5>
+                            الـ ER Diagram بيساعدك ترسم قاعدة البيانات بشكل بصري. المستطيلات بتدل على الجداول، والخطوط بتدل على العلاقات بينهم. استخدم draw.io أو QuickDBD لرسم الـ Diagram.
+                        </div>
+
+                        <div class="er-diagram-area">
+                            <i class="fas fa-sitemap" style="font-size: 4rem; color: var(--navy);"></i>
+                            <p style="margin-top: var(--space-md);">Use these tools to create your ER diagram:</p>
+                            <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-top: var(--space-md);">
+                                <a href="https://app.diagrams.net/" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> draw.io
+                                </a>
+                                <a href="https://www.quickdatabasediagrams.com/" target="_blank" class="btn btn-secondary">
+                                    <i class="fas fa-external-link-alt"></i> QuickDBD
+                                </a>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-top: var(--space-lg);">ER Diagram Components:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md);">
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg); text-align: center;">
+                                <div style="width: 60px; height: 40px; background: var(--navy); margin: 0 auto var(--space-sm); border-radius: 4px;"></div>
+                                <strong>Rectangle</strong>
+                                <p class="text-sm">Entity (Table)</p>
+                            </div>
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg); text-align: center;">
+                                <div style="width: 50px; height: 30px; background: var(--amber); border-radius: 50%; margin: 0 auto var(--space-sm);"></div>
+                                <strong>Oval</strong>
+                                <p class="text-sm">Attribute (Column)</p>
+                            </div>
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg); text-align: center;">
+                                <div style="width: 40px; height: 40px; background: var(--teal); transform: rotate(45deg); margin: 0 auto var(--space-sm);"></div>
+                                <strong>Diamond</strong>
+                                <p class="text-sm">Relationship</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Schema Design -->
+                <div id="builder-step-3" class="builder-step-content" style="display: none;">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-table" style="color: var(--teal);"></i> Step 3: Schema Design</h3>
+                        <p>Convert your ER diagram into actual database tables with columns and data types.</p>
+                        
+                        <div class="explanation-box" dir="rtl">
+                            <h5>بالعربي: تصميم المخطط (Schema)</h5>
+                            دلوقتي هنحول الـ ER Diagram لجداول حقيقية. حدد نوع البيانات لكل عمود (INT, VARCHAR, DATE) والمفاتيح (Primary Keys, Foreign Keys).
+                        </div>
+
+                        <h4 style="margin-top: var(--space-lg);">Example Schema:</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Library Database Schema</span>
+                            </div>
+                            <div class="code-content">CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    major VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    author VARCHAR(100),
+    isbn VARCHAR(20) UNIQUE,
+    category VARCHAR(50),
+    available BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE borrowings (
+    borrowing_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    book_id INT,
+    borrow_date DATE,
+    return_date DATE,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (book_id) REFERENCES books(book_id)
+);</div>
+                        </div>
+
+                        <div style="margin-top: var(--space-lg);">
+                            <h4>Data Types Guide:</h4>
+                            <table style="width: 100%; border-collapse: collapse; margin-top: var(--space-md);">
+                                <tr style="background: var(--bg-tertiary);">
+                                    <th style="padding: var(--space-sm); text-align: left;">Data Type</th>
+                                    <th style="padding: var(--space-sm); text-align: left;">Use For</th>
+                                    <th style="padding: var(--space-sm); text-align: left;">Example</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">INT</td>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">Whole numbers</td>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">ID, Age, Count</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">VARCHAR(n)</td>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">Text up to n chars</td>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">Name, Email</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">DECIMAL(p,s)</td>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">Exact decimal</td>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">Price (10,2)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">DATE/DATETIME</td>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">Dates and times</td>
+                                    <td style="padding: var(--space-sm); border-bottom: 1px solid var(--border-color);">Birth date</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: var(--space-sm);">BOOLEAN</td>
+                                    <td style="padding: var(--space-sm);">True/False</td>
+                                    <td style="padding: var(--space-sm);">Is active</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Normalization -->
+                <div id="builder-step-4" class="builder-step-content" style="display: none;">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-layer-group" style="color: var(--teal);"></i> Step 4: Normalization</h3>
+                        <p>Organize your database to reduce redundancy and improve data integrity.</p>
+                        
+                        <div class="explanation-box" dir="rtl">
+                            <h5>بالعربي: التسوية (Normalization)</h5>
+                            التسوية بتساعدنا نمنع تكرار البيانات. في 3 مستويات (1NF, 2NF, 3NF). كل مستوى بيحل مشكلة معينة في تصميم الجدول.
+                        </div>
+
+                        <h4 style="margin-top: var(--space-lg);">Normal Forms:</h4>
+                        <div style="display: grid; gap: var(--space-md);">
+                            <div style="padding: var(--space-lg); background: var(--bg-tertiary); border-radius: var(--radius-lg); border-left: 4px solid var(--navy);">
+                                <h5 style="margin-bottom: var(--space-sm);"><strong>1NF - First Normal Form</strong></h5>
+                                <p class="text-sm">Each cell contains a single value (no repeating groups)</p>
+                                <p class="text-sm" dir="rtl" style="margin-top: var(--space-xs);">كل خلية ليها قيمة واحدة بس، مفيش قوائم جوة خلية</p>
+                            </div>
+                            <div style="padding: var(--space-lg); background: var(--bg-tertiary); border-radius: var(--radius-lg); border-left: 4px solid var(--amber);">
+                                <h5 style="margin-bottom: var(--space-sm);"><strong>2NF - Second Normal Form</strong></h5>
+                                <p class="text-sm">No partial dependencies (non-key columns depend on entire primary key)</p>
+                                <p class="text-sm" dir="rtl" style="margin-top: var(--space-xs);">كل عمود مش مفتاح لازم يعتمد على المفتاح الأساسي كله</p>
+                            </div>
+                            <div style="padding: var(--space-lg); background: var(--bg-tertiary); border-radius: var(--radius-lg); border-left: 4px solid var(--teal);">
+                                <h5 style="margin-bottom: var(--space-sm);"><strong>3NF - Third Normal Form</strong></h5>
+                                <p class="text-sm">No transitive dependencies (columns only depend on primary key)</p>
+                                <p class="text-sm" dir="rtl" style="margin-top: var(--space-xs);">مفيش عمود يعتمد على عمود تاني مش مفتاح</p>
+                            </div>
+                        </div>
+
+                        <div class="code-block" style="margin-top: var(--space-lg);">
+                            <div class="code-header">
+                                <span>Before & After Normalization</span>
+                            </div>
+                            <div class="code-content">-- NOT Normalized (Bad Design)
+CREATE TABLE orders_bad (
+    order_id INT,
+    customer_name VARCHAR(100),  -- Should be in separate table
+    customer_email VARCHAR(100), -- Redundant customer info
+    product_name VARCHAR(100),   -- Should be in separate table
+    product_price DECIMAL(10,2), -- Product info repeated
+    quantity INT
+);
+
+-- Normalized (Good Design)
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    price DECIMAL(10,2)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE order_items (
+    order_item_id INT PRIMARY KEY,
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Create Tables -->
+                <div id="builder-step-5" class="builder-step-content" style="display: none;">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-hammer" style="color: var(--teal);"></i> Step 5: Create Tables</h3>
+                        <p>Write the actual SQL CREATE TABLE statements to build your database.</p>
+                        
+                        <div class="explanation-box" dir="rtl">
+                            <h5>بالعربي: إنشاء الجداول</h5>
+                            دلوقتي هنكتب أوامر SQL عشان نعمل الجداول. متنساش تعمل قاعدة البيانات الأول (CREATE DATABASE) وبعدين تستخدمها (USE).
+                        </div>
+
+                        <h4 style="margin-top: var(--space-lg);">Step-by-Step SQL:</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Complete Example: Library Database</span>
+                            </div>
+                            <div class="code-content">-- Step 1: Create Database
+CREATE DATABASE IF NOT EXISTS library_db;
+USE library_db;
+
+-- Step 2: Create Students Table
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    major VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Step 3: Create Books Table
+CREATE TABLE books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    author VARCHAR(100),
+    isbn VARCHAR(20) UNIQUE,
+    category VARCHAR(50),
+    available BOOLEAN DEFAULT TRUE
+);
+
+-- Step 4: Create Borrowings Table (with foreign keys)
+CREATE TABLE borrowings (
+    borrowing_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    book_id INT NOT NULL,
+    borrow_date DATE NOT NULL,
+    return_date DATE,
+    status VARCHAR(20) DEFAULT 'borrowed',
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES books(book_id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);</div>
+                        </div>
+
+                        <div style="margin-top: var(--space-lg); padding: var(--space-lg); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                            <h5><i class="fas fa-lightbulb" style="color: var(--amber);"></i> Pro Tips:</h5>
+                            <ul class="key-points">
+                                <li>Always use IF NOT EXISTS to avoid errors</li>
+                                <li>Define PRIMARY KEY for every table</li>
+                                <li>Use appropriate data types for each column</li>
+                                <li>Set foreign keys to maintain referential integrity</li>
+                                <li>Use ON DELETE CASCADE carefully (deletes related data)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Relationships -->
+                <div id="builder-step-6" class="builder-step-content" style="display: none;">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-link" style="color: var(--teal);"></i> Step 6: Set Up Relationships</h3>
+                        <p>Implement foreign keys and establish connections between your tables.</p>
+                        
+                        <div class="explanation-box" dir="rtl">
+                            <h5>بالعربي: إعداد العلاقات</h5>
+                            العلاقات بين الجداول بتعملها من خلال Foreign Keys. الـ Foreign Key في الجدول الفرعي بيشاور على الـ Primary Key في الجدول الرئيسي.
+                        </div>
+
+                        <h4 style="margin-top: var(--space-lg);">Types of Relationships:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-md);">
+                            <div style="padding: var(--space-lg); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <h5 style="color: var(--navy); margin-bottom: var(--space-sm);"><i class="fas fa-arrow-right"></i> One-to-One</h5>
+                                <p class="text-sm">One record in Table A relates to one record in Table B</p>
+                                <p class="text-sm" style="margin-top: var(--space-xs);">Example: User ↔ UserProfile</p>
+                            </div>
+                            <div style="padding: var(--space-lg); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <h5 style="color: var(--navy); margin-bottom: var(--space-sm);"><i class="fas fa-arrow-right"></i> One-to-Many</h5>
+                                <p class="text-sm">One record in Table A relates to many in Table B</p>
+                                <p class="text-sm" style="margin-top: var(--space-xs);">Example: Department ↔ Employees</p>
+                            </div>
+                            <div style="padding: var(--space-lg); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <h5 style="color: var(--navy); margin-bottom: var(--space-sm);"><i class="fas fa-arrows-alt-h"></i> Many-to-Many</h5>
+                                <p class="text-sm">Many records in A relate to many in B (needs junction table)</p>
+                                <p class="text-sm" style="margin-top: var(--space-xs);">Example: Students ↔ Courses</p>
+                            </div>
+                        </div>
+
+                        <div class="code-block" style="margin-top: var(--space-lg);">
+                            <div class="code-header">
+                                <span>Foreign Key Examples</span>
+                            </div>
+                            <div class="code-content">-- One-to-Many: One student has many borrowings
+CREATE TABLE borrowings (
+    borrowing_id INT PRIMARY KEY,
+    student_id INT,
+    book_id INT,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (book_id) REFERENCES books(book_id)
+);
+
+-- Many-to-Many: Students enroll in many Courses
+-- Need a junction table: enrollments
+CREATE TABLE enrollments (
+    enrollment_id INT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    semester VARCHAR(20),
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Test & Optimize -->
+                <div id="builder-step-7" class="builder-step-content" style="display: none;">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-vial" style="color: var(--teal);"></i> Step 7: Test & Optimize</h3>
+                        <p>Verify your database works correctly and optimize for performance.</p>
+                        
+                        <div class="explanation-box" dir="rtl">
+                            <h5>بالعربي: اختبار وتحسين</h5>
+                            جرب قاعدة البيانات بتاعتك: ضيف بيانات، جرب الاستعلامات، تأكد إن العلاقات شغالة صح. بعدين اعمل Indexes عشان تسريع البحث.
+                        </div>
+
+                        <h4 style="margin-top: var(--space-lg);">Testing Checklist:</h4>
+                        <div style="display: grid; gap: var(--space-md);">
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <label style="display: flex; align-items: flex-start; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" class="test-check"> 
+                                    <div>
+                                        <strong>Insert Test Data</strong>
+                                        <p class="text-sm">Add sample records to all tables</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <label style="display: flex; align-items: flex-start; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" class="test-check"> 
+                                    <div>
+                                        <strong>Test Relationships</strong>
+                                        <p class="text-sm">Try to insert invalid foreign keys (should fail)</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <label style="display: flex; align-items: flex-start; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" class="test-check"> 
+                                    <div>
+                                        <strong>Run Sample Queries</strong>
+                                        <p class="text-sm">Test SELECT, JOIN, and aggregate queries</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div style="padding: var(--space-md); background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <label style="display: flex; align-items: flex-start; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" class="test-check"> 
+                                    <div>
+                                        <strong>Add Indexes</strong>
+                                        <p class="text-sm">Create indexes on frequently queried columns</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="code-block" style="margin-top: var(--space-lg);">
+                            <div class="code-header">
+                                <span>Optimization: Creating Indexes</span>
+                            </div>
+                            <div class="code-content">-- Index for frequently searched columns
+CREATE INDEX idx_student_email ON students(email);
+CREATE INDEX idx_book_title ON books(title);
+CREATE INDEX idx_borrowing_dates ON borrowings(borrow_date, return_date);
+
+-- Composite index for common query patterns
+CREATE INDEX idx_book_category_available ON books(category, available);
+
+-- Check if queries use indexes
+EXPLAIN SELECT * FROM students WHERE email = 'test@example.com';</div>
+                        </div>
+
+                        <div style="margin-top: var(--space-lg); text-align: center;" id="builder-complete">
+                            <div style="padding: var(--space-xl); background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border-radius: var(--radius-xl); border: 2px solid var(--success);">
+                                <i class="fas fa-trophy" style="font-size: 3rem; color: var(--success); margin-bottom: var(--space-md);"></i>
+                                <h3 style="color: var(--success);">Congratulations!</h3>
+                                <p>You have completed the database building process!</p>
+                                <button class="btn btn-success btn-lg" onclick="navigateTo('practice')" style="margin-top: var(--space-md);">
+                                    <i class="fas fa-laptop-code"></i> Practice Your SQL
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript -->
+    <script src="js/data/course-content.js"></script>
+    <script src="js/data/quiz-data.js"></script>
+    <script src="js/data/sample-database.js"></script>
+    <script src="js/platform-api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/auth-progress.js"></script>
+</body>
+</html>

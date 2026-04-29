@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - DBHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cairo:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/auth-dashboard.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="page-auth-body">
+    <main class="main-content page-auth">
+        <div class="page-auth__inner">
+            <header class="auth-brand">
+                <img src="../logo.jpg" alt="NMU" class="auth-brand__logo" width="88" height="88">
+                <p class="auth-brand__title">New Mansoura University · DBHub</p>
+                <h2 class="auth-brand__name">Welcome back</h2>
+            </header>
+
+            <section class="glass-card auth-card">
+                <h1><i class="fas fa-right-to-bracket" aria-hidden="true"></i> Sign In</h1>
+                <p>Sign in to continue tracking your MySQL learning progress.</p>
+                <p id="auth-message" style="display:none;margin-bottom:12px;" role="alert"></p>
+
+                <form id="signin-form" class="auth-form" novalidate>
+                    <label for="email">Email</label>
+                    <input class="input" id="email" name="email" type="email" required autocomplete="email">
+
+                    <label for="password">Password</label>
+                    <input class="input" id="password" name="password" type="password" required autocomplete="current-password">
+
+                    <label class="auth-checkbox" for="remember_me">
+                        <input type="checkbox" id="remember_me" name="remember_me">
+                        <span class="text-sm">Remember me for 30 days</span>
+                    </label>
+
+                    <button class="btn btn-primary btn-block" id="signin-btn" type="submit" style="margin-top:14px;">
+                        <i class="fas fa-arrow-right-to-bracket"></i> Sign In
+                    </button>
+                </form>
+
+                <div class="auth-footer-links">
+                    <span>New here? <a href="./signup.html">Create an account</a></span>
+                    <a href="../index.html"><i class="fas fa-house" aria-hidden="true"></i> Back to home</a>
+                </div>
+            </section>
+
+            <p class="auth-footnote">Your session is protected; progress syncs when you’re signed in.</p>
+        </div>
+    </main>
+    <script src="../js/platform-api.js"></script>
+    <script src="../js/auth-pages.js"></script>
+</body>
+</html>
