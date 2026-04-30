@@ -5,6 +5,17 @@
         me: null,
     };
 
+    function apiBase() {
+        const scripts = document.querySelectorAll('script[src]');
+        for (const s of scripts) {
+            const match = s.src.match(/^(.+?)\/?js\/platform-api\.js/);
+            if (match) return match[1].replace(/\/+$/, '');
+        }
+        return '';
+    }
+
+    const BASE = apiBase();
+
     async function request(url, options = {}) {
         const opts = {
             method: options.method || 'GET',
@@ -20,14 +31,15 @@
         if (state.csrfToken && opts.method !== 'GET') {
             opts.headers['X-CSRF-Token'] = state.csrfToken;
         }
-        const res = await fetch(url, opts);
+        const fullUrl = url.startsWith('/') ? BASE + url : url;
+        const res = await fetch(fullUrl, opts);
         const text = await res.text();
         let data;
         try {
             data = text ? JSON.parse(text) : {};
         } catch {
             throw new Error(
-                'The server returned HTML instead of JSON. Open the site at http://127.0.0.1:8000/ (not file://) and try again.'
+                'The server returned HTML instead of JSON. Make sure you are accessing the site through http://localhost/ADB/ (not file://) and try again.'
             );
         }
         if (data && data.csrf_token) {

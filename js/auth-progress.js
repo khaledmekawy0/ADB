@@ -4,6 +4,20 @@
     const questionTextToId = new Map();
     const taskTitleToId = new Map();
 
+    function createAuthGuardOverlay() {
+        const overlay = document.createElement('div');
+        overlay.id = 'auth-guard-overlay';
+        overlay.style.cssText = 'position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:var(--bg-primary,#0f172a);color:var(--text-primary,#e2e8f0);font-family:Inter,system-ui,sans-serif;';
+        overlay.innerHTML = '<div style="text-align:center;"><i class="fas fa-spinner fa-spin" style="font-size:2rem;margin-bottom:12px;display:block;"></i><p>Checking authentication…</p></div>';
+        document.body.appendChild(overlay);
+        return overlay;
+    }
+
+    function removeAuthGuardOverlay() {
+        const overlay = document.getElementById('auth-guard-overlay');
+        if (overlay) overlay.remove();
+    }
+
     function normalize(text) {
         return String(text || '').trim().toLowerCase().replace(/\s+/g, ' ');
     }
@@ -173,11 +187,29 @@
 
     async function init() {
         if (!window.PlatformAPI) return;
+
+        const isMainPage = !!document.getElementById('sidebar') || document.querySelector('[data-page="landing"]');
+        let overlay = null;
+        if (isMainPage) {
+            overlay = createAuthGuardOverlay();
+        }
+
         try {
             await window.PlatformAPI.init();
         } catch {
-            /* no-op */
+            if (isMainPage) {
+                window.location.href = 'auth/signin.html';
+                return;
+            }
         }
+
+        const student = window.PlatformAPI.state.me;
+        if (isMainPage && !student) {
+            window.location.href = 'auth/signin.html';
+            return;
+        }
+
+        if (overlay) removeAuthGuardOverlay();
 
         try {
             const catalog = await window.PlatformAPI.loadCatalog();
